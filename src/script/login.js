@@ -18,7 +18,7 @@ document.getElementById('login-button').addEventListener('click', async (event) 
 
     try {
         // Faz a requisição ao backend
-        const response = await fetch('https://back-pix.onrender.com/login', {
+        const response = await fetch('https://localhost:3300/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
