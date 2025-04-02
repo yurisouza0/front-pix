@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const socket = new WebSocket('ws://localhost:3300'); 
+    const socket = new WebSocket('ws://https://back-pix.onrender.com'); 
 
     socket.onopen = () => {
         console.log('Conexão WebSocket estabelecida!');
