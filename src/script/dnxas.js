@@ -6,21 +6,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             title: 'Acesso negado!',
             text: 'Você precisa fazer login para acessar esta página!',
             icon: 'error',
-            timer: 3000, // O alerta fecha automaticamente após 3 segundos
-            showConfirmButton: false // Remove o botão "OK"
+            timer: 2000, // Reduzido para melhorar experiência
+            showConfirmButton: false
         });
     
         setTimeout(() => {
             window.location.href = '/src/login.html'; // Redireciona para login
-        }, 2000); // Aguarda 3 segundos antes de redirecionar
+        }, 2000);
         return;
     }
+
     try {
-        // Faz a verificação do token com a API
+        // Verifica o token com a API
         const response = await fetch('http://localhost:3300/rota-protegida', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}` // Adiciona o token no cabeçalho
+                'Authorization': `Bearer ${token}`
             }
         });
 
@@ -28,34 +29,70 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!response.ok) {
             Swal.fire({
                 title: 'Erro de autenticação!',
-                text: data.mensagem, // Mensagem retornada do servidor
-                icon: 'warning', // Alerta do tipo "warning"
-                timer: 3000, // O alerta fecha automaticamente após 3 segundos
-                showConfirmButton: false // Remove o botão "OK"
+                text: data.mensagem,
+                icon: 'warning',
+                timer: 3000,
+                showConfirmButton: false
             });
-        
+
             setTimeout(() => {
-                window.location.href = '/src/login.html'; // Redireciona para a página de login após o alerta
-            }, 3000); // Aguarda o tempo do alerta antes de redirecionar
+                window.location.href = '/src/login.html';
+            }, 3000);
             return;
         }
 
         // Estabelece a conexão WebSocket após autenticação bem-sucedida
-        const socket = new WebSocket('ws://localhost:3300'); // Substitua pela URL do servidor WebSocket
+        const socket = new WebSocket('ws://localhost:3300');
 
-socket.onopen = () => {
-    console.log('Conexão WebSocket estabelecida!');
-    // Envia o token JWT para autenticação
-    socket.send(JSON.stringify({ type: 'auth', token }));
-};
+        socket.onopen = () => {
+            console.log('Conexão WebSocket estabelecida!');
+            socket.send(JSON.stringify({ type: 'auth', token }));
+        };
 
         socket.onmessage = (event) => {
-            console.log('Mensagem do servidor:', event.data);
-            // Trate mensagens recebidas do WebSocket aqui
+            const data = JSON.parse(event.data);
+
+            // Trata mensagens do WebSocket
+            if (data.mensagem === 'Token inválido. Conexão será encerrada.') {
+                Swal.fire({
+                    title: 'Sessão Expirada!',
+                    text: 'Por favor, faça login novamente.',
+                    icon: 'error',
+                    timer: 3000,
+                    showConfirmButton: false
+                });
+                setTimeout(() => {
+                    window.location.href = '/src/login.html';
+                }, 3000);
+                socket.close();
+                return;
+            }
+
+            if (data.qrCode) {
+                const qrCodeImg = document.getElementById('qr-code');
+                if (qrCodeImg) {
+                    qrCodeImg.src = data.qrCode;
+                } else {
+                    console.error('Elemento <img> para QR Code não encontrado!');
+                }
+            }
+
+            if (data.mensagem) {
+                document.getElementById('error-message').textContent = data.mensagem;
+            }
+
+            console.log('Mensagem recebida do servidor:', data);
         };
 
         socket.onerror = (error) => {
             console.error('Erro na conexão WebSocket:', error);
+            Swal.fire({
+                title: 'Erro de Conexão!',
+                text: 'Não foi possível conectar ao servidor. Tente novamente mais tarde.',
+                icon: 'error',
+                timer: 3000,
+                showConfirmButton: false
+            });
         };
 
         socket.onclose = () => {
@@ -64,6 +101,12 @@ socket.onopen = () => {
 
     } catch (error) {
         console.error('Erro ao conectar ao servidor:', error);
-        alert('Erro ao conectar ao servidor.');
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Erro ao conectar ao servidor.',
+            icon: 'error',
+            timer: 3000,
+            showConfirmButton: false
+        });
     }
 });
