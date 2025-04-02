@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
 
-        const socket = new WebSocket('ws://https://back-pix.onrender.com');
+        const socket = new WebSocket('wss://https://back-pix.onrender.com');
 
         socket.onopen = () => {
             console.log('Conexão WebSocket estabelecida!');
