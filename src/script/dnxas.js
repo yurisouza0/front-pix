@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Estabelece a conexão WebSocket após autenticação bem-sucedida
         const socket = new WebSocket('ws://localhost:3300'); // Substitua pela URL do servidor WebSocket
 
-        socket.onopen = () => {
-            console.log('Conexão WebSocket estabelecida!');
-            // Envia o token JWT ao servidor para autenticar a conexão WebSocket
-            socket.send(JSON.stringify({ type: 'auth', token }));
-        };
+socket.onopen = () => {
+    console.log('Conexão WebSocket estabelecida!');
+    // Envia o token JWT para autenticação
+    socket.send(JSON.stringify({ type: 'auth', token: 'SEU_TOKEN_AQUI' }));
+};
 
         socket.onmessage = (event) => {
             console.log('Mensagem do servidor:', event.data);
