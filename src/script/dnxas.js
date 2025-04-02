@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
 
-        const response = await fetch('http://localhost:3300/rota-protegida', {
+        const response = await fetch('https://back-pix.onrender.com/rota-protegida', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
 
-        const socket = new WebSocket('ws://localhost:3300');
+        const socket = new WebSocket('ws://https://back-pix.onrender.com');
 
         socket.onopen = () => {
             console.log('Conexão WebSocket estabelecida!');
