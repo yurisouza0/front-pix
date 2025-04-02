@@ -1,42 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-br"> <!-- Define o idioma como pt-BR -->
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Meta Tags SEO -->
-    <meta name="description" content="Gerador de QR Code para PIX de forma prática e eficiente.">
-    <meta name="keywords" content="PIX, QR Code, Gerador, Bot, Pagamentos">
-    <meta name="author" content="DICK">
-
-    <!-- Meta Tags Open Graph -->
+    <meta name="description" content="Gerador de QR Code para PIX integrado ao WhatsApp.">
     <meta property="og:title" content="Bot Pix Generator">
-    <meta property="og:description" content="Crie QR Codes para pagamentos PIX com facilidade e rapidez.">
-    <meta property="og:image" content="https://i.postimg.cc/MGHyrRRR/h-Hl-VFj6-X-removebg-preview.png">
-    <meta property="og:url" content="https://example.com"> <!-- Substitua pelo URL do seu site -->
-    <meta property="og:type" content="website">
-
-    <!-- Título da Página -->
-    <title>Bot Pix Generator</title>
-    
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" href="./src/style/globals.css" />
-    <link rel="stylesheet" href="./src/style/style.css" />
+    <link rel="stylesheet" href="./style/globals.css" />
+    <link rel="stylesheet" href="./style/styleLogin.css" />
   </head>
   <body>
     <div class="slide-screens">
-      <div class="explore-the-world">BOT PIX <br />GENERATOR</div>
-      <img class="bot" src="./src/img/hHlVFj6X-removebg-preview.png" alt="Logo do Bot PIX Generator">
-      <a href="./src/login.html">
-        <img class="next-button" src="./src/img/Next Button.png" alt="Botão para próxima página">
-      </a>
-      <div class="group">
-        <div class="overlap-group">
-        </div>
+        <div class="login">LOGIN </div>
+        <form id="login-form">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <div id="password-error" class="error-message"></div>
+        </form>
+
+        <a >
+            <img class="next-button" src="./img/Next Button.png" id="login-button" />
+        </a>
+        <div class="group">
+            <div class="overlap-group">
+            </div>
       </div>
     </div>
 
-    <footer class="merch">Desenvolvido por DICK</footer>
-     <script src="./script/login.js"></script>
+    <footer class="merch">Developed by DICK</footer>
+
+    <script src="./script/login.js"></script>
   </body>
 </html>
