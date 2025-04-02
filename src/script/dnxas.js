@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const token = localStorage.getItem('authToken'); // Recupera o token JWT armazenado
+    const token = localStorage.getItem('authToken'); 
 
     if (!token) {
         Swal.fire({
             title: 'Acesso negado!',
             text: 'Você precisa fazer login para acessar esta página!',
             icon: 'error',
-            timer: 2000, // Reduzido para melhorar experiência
+            timer: 2000, 
             showConfirmButton: false
         });
     
         setTimeout(() => {
-            window.location.href = '/src/login.html'; // Redireciona para login
+            window.location.href = '/src/login.html'; 
         }, 2000);
         return;
     }
 
     try {
-        // Verifica o token com a API
+
         const response = await fetch('http://localhost:3300/rota-protegida', {
             method: 'GET',
             headers: {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        // Estabelece a conexão WebSocket após autenticação bem-sucedida
+
         const socket = new WebSocket('ws://localhost:3300');
 
         socket.onopen = () => {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
 
-            // Trata mensagens do WebSocket
+ 
             if (data.mensagem === 'Token inválido. Conexão será encerrada.') {
                 Swal.fire({
                     title: 'Sessão Expirada!',
