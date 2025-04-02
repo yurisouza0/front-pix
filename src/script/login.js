@@ -1,11 +1,11 @@
 document.getElementById('login-button').addEventListener('click', async (event) => {
-    event.preventDefault(); // Impede o comportamento padrão do clique
+    event.preventDefault(); 
 
     const email = document.querySelector('input[name="email"]').value.trim();
     const senha = document.querySelector('input[name="password"]').value.trim();
 
     const passwordErrorElement = document.getElementById('password-error');
-    passwordErrorElement.textContent = ''; // Limpa mensagens anteriores
+    passwordErrorElement.textContent = ''; 
 
     if (!email || !senha) {
         passwordErrorElement.textContent = 'Email e senha são obrigatórios!';
