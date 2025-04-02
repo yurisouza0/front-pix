@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch('https://back-pix.onrender.com/rota-protegida', {
+        const response = await fetch('https://localhost:3300/rota-protegida', {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
