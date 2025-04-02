@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     try {
         // Faz a verificação do token com a API
-        const response = await fetch('https://back-pix.onrender.com/rota-protegida', {
+        const response = await fetch('https://localhost:3300/rota-protegida', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}` // Adiciona o token no cabeçalho
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         // Estabelece a conexão WebSocket após autenticação bem-sucedida
-        const socket = new WebSocket('ws://back-pix.onrender.com'); // Substitua pela URL do servidor WebSocket
+        const socket = new WebSocket('ws://localhost:3300'); // Substitua pela URL do servidor WebSocket
 
         socket.onopen = () => {
             console.log('Conexão WebSocket estabelecida!');
