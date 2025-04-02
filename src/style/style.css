@@ -1,0 +1,116 @@
+/* Reseta estilos padrões do navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff7b7b, #ff8c42);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  outline: none;
+}
+
+.slide-screens {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 450px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.explore-the-world {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #252525;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.next-button {
+  border: none;
+  cursor: pointer;
+  height: 50px;
+  transition: transform 0.3s ease;
+  animation: pulse-animation 1.5s infinite; 
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: scale(1); /* Tamanho original */
+  }
+  50% {
+    transform: scale(1.2); /* Aumenta o tamanho */
+  }
+  100% {
+    transform: scale(1); /* Retorna ao tamanho original */
+  }
+}
+
+
+
+.group {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.overlap-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.bot {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.merch {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #252525;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 1px;
+}
+
+/* Estilo responsivo para telas menores */
+@media screen and (max-width: 41px) {
+  .explore-the-world {
+    font-size: 1.8rem; /* Ajusta o tamanho da fonte para telas pequenas */
+  }
+
+  .next-button {
+    width: 50px; /* Ajusta o tamanho do botão */
+    height: 50px; /* Ajusta o tamanho do botão */
+  }
+
+  .bot {
+    width: 80%; /* Ajusta a largura da imagem para caber melhor na tela */
+  }
+
+  .merch {
+    font-size: 1rem; /* Ajusta o tamanho da fonte no rodapé */
+    bottom: 10px; /* Ajusta a posição do rodapé */
+  }
+}

@@ -1,0 +1,134 @@
+/* Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Corpo da página */
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff7b7b, #ff8c42);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    outline: none;
+  }
+  
+  /* Contêiner principal */
+  .slide-screens {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título "LOGIN" */
+  .login {
+    font-size: 2.5rem;
+    color: #333333;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  /* Formulário de login */
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #007BFF;
+  }
+  
+  
+  /* Estilo da imagem do bot */
+  .bot {
+    width: 150px;
+    height: auto;
+    margin: 30px 0;
+  }
+  
+  /* Botão de navegação */
+  .next-button {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    animation: pulse-animation 1.5s infinite; 
+  }
+  
+  @keyframes pulse-animation {
+    0% {
+      transform: scale(1); /* Tamanho original */
+    }
+    50% {
+      transform: scale(1.2); /* Aumenta o tamanho */
+    }
+    100% {
+      transform: scale(1); /* Retorna ao tamanho original */
+    }
+  }
+  
+
+  
+  /* Responsividade */
+  @media screen and (max-width: 600px) {
+    .login {
+      font-size: 2rem; /* Ajusta o tamanho do título em telas menores */
+    }
+  
+    .bot {
+      width: 100px; /* Reduz a imagem em dispositivos móveis */
+    }
+  
+    .next-button {
+      width: 40px; /* Ajusta o tamanho do botão */
+      height: 40px; /* Ajusta o tamanho do botão */
+    }
+  
+    form {
+      padding: 20px;
+    }
+  
+    input, button {
+      font-size: 0.9rem; /* Ajusta o tamanho da fonte para dispositivos móveis */
+    }
+  }
+  
+  /* Rodapé */
+  .merch {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #252525;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 1px;
+}
