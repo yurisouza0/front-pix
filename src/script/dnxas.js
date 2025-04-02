@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     try {
         // Faz a verificação do token com a API
-        const response = await fetch('https://localhost:3300/rota-protegida', {
+        const response = await fetch('http://localhost:3300/rota-protegida', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}` // Adiciona o token no cabeçalho
