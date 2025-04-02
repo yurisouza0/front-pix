@@ -12,25 +12,21 @@ socket.onmessage = (event) => {
         const data = JSON.parse(event.data);
         console.log('Mensagem recebida do servidor:', data);
 
-        if (data.mensagem === 'Autenticação bem-sucedida!') {
-            console.log('Autenticação realizada com sucesso!');
-            socket.send(JSON.stringify({ type: 'fetch-qr' })); // Solicita o QR Code
-        }
-
         if (data.qrCode) {
             const qrCodeImg = document.getElementById('qr-code');
             if (qrCodeImg) {
-                qrCodeImg.src = data.qrCode;
+                qrCodeImg.src = data.qrCode; // Atualiza o QR Code no <img>
                 console.log('QR Code atualizado no frontend!');
             } else {
                 console.error('Elemento <img> com id "qr-code" não encontrado!');
             }
+        } else if (data.mensagem) {
+            console.log('Mensagem recebida do servidor:', data.mensagem);
         }
     } catch (error) {
         console.error('Erro ao processar mensagem do servidor:', error);
     }
 };
-
 
     socket.onclose = () => {
         console.log('Conexão WebSocket fechada.');
