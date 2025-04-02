@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        alert('Token válido! Bem-vindo!');
     } catch (error) {
         passwordErrorElement.textContent = 'Erro ao conectar ao servidor.';
         passwordErrorElement.style.color = 'red';
