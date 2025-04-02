@@ -25,24 +25,26 @@ document.addEventListener('DOMContentLoaded', () => {
             // Confirmação de autenticação
             if (data.mensagem === 'Autenticação bem-sucedida!') {
                 console.log('Autenticação realizada com sucesso!');
-                // Após autenticação, solicita o QR Code
+                // Após autenticação, solicita o QR Code inicial
                 socket.send(JSON.stringify({ type: 'fetch-qr' }));
             }
 
-            // Resposta do servidor com QR Code
+            // Atualiza automaticamente o QR Code ao receber mensagem com QR Code
             if (data.qrCode) {
                 const qrCodeImg = document.getElementById('qr-code');
                 if (qrCodeImg) {
-                    qrCodeImg.src = data.qrCode; // Atualiza o QR Code no elemento HTML
+                    qrCodeImg.src = data.qrCode; // Define o QR Code no elemento <img>
                     console.log('QR Code atualizado no frontend!');
                 } else {
                     console.error('Elemento <img> com id "qr-code" não encontrado!');
                 }
-            } else if (data.mensagem && data.mensagem !== 'Autenticação bem-sucedida!') {
-                // Exibe outras mensagens do servidor
+            }
+
+            // Exibe mensagens adicionais do servidor
+            if (data.mensagem && !data.qrCode) {
+                console.log('Mensagem do servidor:', data.mensagem);
                 const errorElement = document.getElementById('error-message');
-                errorElement.textContent = data.mensagem;
-                console.error('Mensagem do servidor:', data.mensagem);
+                errorElement.textContent = data.mensagem || 'Erro desconhecido.';
             }
         } catch (error) {
             console.error('Erro ao processar mensagem do servidor:', error);
