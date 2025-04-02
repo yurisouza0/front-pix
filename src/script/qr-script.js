@@ -1,30 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const socket = new WebSocket('ws://localhost:3300'); // Substitua pela URL do servidor WebSocket
+    const socket = new WebSocket('ws://localhost:3300'); // URL do servidor WebSocket
 
     // Evento ao abrir a conexão WebSocket
     socket.onopen = () => {
         console.log('Conexão WebSocket estabelecida!');
-        // Solicita o QR Code ao servidor
-        socket.send(JSON.stringify({ type: 'fetch-qr' }));
+
+        // Recupera o token do localStorage
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            // Envia o token para autenticar
+            socket.send(JSON.stringify({ type: 'auth', token }));
+            console.log('Token enviado para autenticação:', token);
+        } else {
+            console.error('Token não encontrado no localStorage. Você precisa fazer login.');
+        }
     };
 
-    // Evento ao receber mensagens do servidor WebSocket
+    // Evento ao receber mensagens do servidor
     socket.onmessage = (event) => {
         try {
-            const data = JSON.parse(event.data); // Tenta processar os dados recebidos
+            const data = JSON.parse(event.data);
             console.log('Mensagem recebida do servidor:', data);
 
+            // Confirmação de autenticação
+            if (data.mensagem === 'Autenticação bem-sucedida!') {
+                console.log('Autenticação realizada com sucesso!');
+                // Após autenticação, solicita o QR Code
+                socket.send(JSON.stringify({ type: 'fetch-qr' }));
+            }
+
+            // Resposta do servidor com QR Code
             if (data.qrCode) {
                 const qrCodeImg = document.getElementById('qr-code');
                 if (qrCodeImg) {
-                    qrCodeImg.src = data.qrCode; // Atualiza o elemento <img> com o QR Code
+                    qrCodeImg.src = data.qrCode; // Atualiza o QR Code no elemento HTML
                     console.log('QR Code atualizado no frontend!');
                 } else {
                     console.error('Elemento <img> com id "qr-code" não encontrado!');
                 }
-            } else if (data.mensagem) {
+            } else if (data.mensagem && data.mensagem !== 'Autenticação bem-sucedida!') {
+                // Exibe outras mensagens do servidor
                 const errorElement = document.getElementById('error-message');
-                errorElement.textContent = data.mensagem || 'Erro desconhecido.';
+                errorElement.textContent = data.mensagem;
                 console.error('Mensagem do servidor:', data.mensagem);
             }
         } catch (error) {
