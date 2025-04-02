@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 socket.onopen = () => {
     console.log('Conexão WebSocket estabelecida!');
     // Envia o token JWT para autenticação
-    socket.send(JSON.stringify({ type: 'auth', token: 'SEU_TOKEN_AQUI' }));
+    socket.send(JSON.stringify({ type: 'auth', token }));
 };
 
         socket.onmessage = (event) => {
