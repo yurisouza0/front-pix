@@ -1,134 +1,170 @@
 /* Estilos Globais */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Corpo da página */
-  body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ff7b7b, #ff8c42);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    outline: none;
-  }
-  
-  /* Contêiner principal */
-  .slide-screens {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Título "LOGIN" */
-  .login {
-    font-size: 2.5rem;
-    color: #333333;
-    margin-bottom: 30px;
-    font-weight: bold;
-  }
-  
-  /* Formulário de login */
-  form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 15px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    border-color: #007BFF;
-  }
-  
-  
-  /* Estilo da imagem do bot */
-  .bot {
-    width: 150px;
-    height: auto;
-    margin: 30px 0;
-  }
-  
-  /* Botão de navegação */
-  .next-button {
-    width: 50px;
-    height: 50px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    animation: pulse-animation 1.5s infinite; 
-  }
-  
-  @keyframes pulse-animation {
-    0% {
-      transform: scale(1); /* Tamanho original */
-    }
-    50% {
-      transform: scale(1.2); /* Aumenta o tamanho */
-    }
-    100% {
-      transform: scale(1); /* Retorna ao tamanho original */
-    }
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
 
-  
-  /* Responsividade */
-  @media screen and (max-width: 600px) {
-    .login {
-      font-size: 2rem; /* Ajusta o tamanho do título em telas menores */
-    }
-  
-    .bot {
-      width: 100px; /* Reduz a imagem em dispositivos móveis */
-    }
-  
-    .next-button {
-      width: 40px; /* Ajusta o tamanho do botão */
-      height: 40px; /* Ajusta o tamanho do botão */
-    }
-  
-    form {
-      padding: 20px;
-    }
-  
-    input, button {
-      font-size: 0.9rem; /* Ajusta o tamanho da fonte para dispositivos móveis */
-    }
+/* Corpo da página */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff7b7b, #ff8c42);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  outline: none;
+  padding: 20px;
+}
+
+/* Contêiner principal */
+.slide-screens {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px; /* Mais espaçamento interno */
+  width: 100%;
+  max-width: 700px; /* Ampliado para telas maiores */
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra mais destacada */
+}
+
+/* Título "LOGIN" */
+.login {
+  font-size: 3rem; /* Aumentado para destaque */
+  color: #333333;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+/* Formulário de login */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px; /* Espaçamento mais generoso entre os campos */
+}
+
+input {
+  width: 100%;
+  padding: 18px; /* Campos de texto maiores */
+  font-size: 1.2rem; /* Texto mais legível */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Bordas mais suaves */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007BFF;
+}
+
+/* Estilo da imagem do bot */
+.bot {
+  width: 200px; /* Aumentado para maior destaque */
+  height: auto;
+  margin: 40px 0;
+}
+
+/* Botão de navegação */
+.next-button {
+  border: 3px solid #ff8c42;
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  animation: pulse-animation 1.5s infinite;
+  border-radius: 100%;
+}
+
+@keyframes pulse-animation {
+  0% {
+      transform: scale(1);
   }
-  
-  /* Rodapé */
+  50% {
+      transform: scale(1.2);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* Rodapé */
+.merch {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #252525;
+  font-size: 1.5rem; /* Fonte maior */
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 30px; /* Mais espaçamento */
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 1.2px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  .slide-screens {
+      padding: 40px; /* Reduzido, mas mantém espaçamento confortável */
+      max-width: 90%; /* Preenche mais da tela */
+  }
+
+  .login {
+      font-size: 2.5rem; /* Menor, mas ainda destacado */
+      margin-bottom: 30px;
+  }
+
+  .bot {
+      width: 150px; /* QR Code proporcional */
+  }
+
+  .next-button {
+      width: 50px; /* Botão proporcional */
+      height: 50px;
+  }
+
+  input {
+      font-size: 1rem; /* Texto ajustado */
+      padding: 15px;
+  }
+
   .merch {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: #252525;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    letter-spacing: 1px;
+      font-size: 1.2rem; /* Ajuste para telas menores */
+      bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slide-screens {
+      padding: 30px;
+  }
+
+  .login {
+      font-size: 2rem; /* Reduzido para dispositivos pequenos */
+  }
+
+  .bot {
+      width: 120px;
+  }
+
+  .next-button {
+      width: 45px;
+      height: 45px;
+  }
+
+  input {
+      padding: 12px;
+      font-size: 0.9rem;
+  }
+
+  .merch {
+      font-size: 1rem;
+  }
 }
