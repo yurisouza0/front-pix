@@ -15,15 +15,16 @@ body {
   flex-direction: column;
   text-align: center;
   outline: none;
+  padding: 20px;
 }
 
 .slide-screens {
   background-color: #fff;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 450px;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px; /* Bordas mais arredondadas para suavizar */
+  width: 90%; /* Maior largura para ocupar espaço proporcional */
+  max-width: 500px; /* Expansão do tamanho máximo */
+  padding: 30px; /* Adicionado mais espaçamento interno */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra mais forte para destacar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,51 +34,52 @@ body {
 .explore-the-world {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 3rem; /* Título maior para dar destaque */
   color: #252525;
-  line-height: 1.2;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-bottom: 30px; /* Distância maior do título */
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px; /* Letras mais espaçadas */
 }
 
 .next-button {
-  border: none;
-  cursor: pointer;
-  height: 50px;
+  border: 3px solid #ff8c42;
+  width: 60px;
+  height: 60px;
   transition: transform 0.3s ease;
-  animation: pulse-animation 1.5s infinite; 
+  cursor: pointer;
+  animation: pulse-animation 1.5s infinite;
+  border-radius: 100%;
 }
+
 
 @keyframes pulse-animation {
   0% {
-    transform: scale(1); /* Tamanho original */
+    transform: scale(1);
   }
   50% {
-    transform: scale(1.2); /* Aumenta o tamanho */
+    transform: scale(1.2);
   }
   100% {
-    transform: scale(1); /* Retorna ao tamanho original */
+    transform: scale(1);
   }
 }
 
-
-
 .group {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 25px; /* Distância maior entre os grupos */
 }
 
 .overlap-group {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px; /* Maior espaçamento */
 }
 
 .bot {
   width: 100%;
-  max-width: 300px;
+  max-width: 350px; /* QR Code maior */
   border-radius: 10px;
 }
 
@@ -85,32 +87,39 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   color: #252525;
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* Fonte maior no rodapé */
   text-transform: uppercase;
   position: absolute;
-  bottom: 20px;
+  bottom: 30px; /* Mais espaço no rodapé */
   left: 50%;
   transform: translateX(-50%);
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
 }
 
 /* Estilo responsivo para telas menores */
-@media screen and (max-width: 41px) {
+@media screen and (max-width: 768px) {
+  .slide-screens {
+    width: 100%;
+    padding: 20px; /* Reduz o padding interno */
+    max-width: 400px;
+  }
+
   .explore-the-world {
-    font-size: 1.8rem; /* Ajusta o tamanho da fonte para telas pequenas */
+    font-size: 2.5rem; /* Ajusta o tamanho do título */
   }
 
   .next-button {
-    width: 50px; /* Ajusta o tamanho do botão */
-    height: 50px; /* Ajusta o tamanho do botão */
+    background-color: #ff8c42; 
+    font-size: 1rem;
+    padding: 12px 20px; /* Ajusta o tamanho do botão */
   }
 
   .bot {
-    width: 80%; /* Ajusta a largura da imagem para caber melhor na tela */
+    max-width: 280px; /* Ajusta o tamanho da imagem */
   }
 
   .merch {
-    font-size: 1rem; /* Ajusta o tamanho da fonte no rodapé */
-    bottom: 10px; /* Ajusta a posição do rodapé */
+    font-size: 1.2rem;
+    bottom: 20px; /* Ajusta a posição no rodapé */
   }
 }
