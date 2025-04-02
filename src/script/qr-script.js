@@ -10,14 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
 socket.onmessage = (event) => {
     try {
         const data = JSON.parse(event.data);
+        console.log('Mensagem recebida do servidor:', data);
 
-        // Trata autenticação bem-sucedida
         if (data.mensagem === 'Autenticação bem-sucedida!') {
             console.log('Autenticação realizada com sucesso!');
             socket.send(JSON.stringify({ type: 'fetch-qr' })); // Solicita o QR Code
         }
 
-        // Exibe o QR Code recebido
         if (data.qrCode) {
             const qrCodeImg = document.getElementById('qr-code');
             if (qrCodeImg) {
@@ -31,7 +30,6 @@ socket.onmessage = (event) => {
         console.error('Erro ao processar mensagem do servidor:', error);
     }
 };
-
 
 
     socket.onclose = () => {
